@@ -1,0 +1,18 @@
+@charset "utf-8";
+body {
+    margin: 0px;
+    padding: 0px;
+}
+/*全体の枠*/
+#warp {
+    margin: 0 auto;
+    width: 800px;
+}
+textarea, input {
+	border:2px solid #CFD8DC;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+li {
+    list-style: none;
+}
