@@ -5,7 +5,7 @@ error_reporting(E_ALL & ~E_NOTICE);
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = $_POST["name"];
     $name2 = $_POST["name2"];
-    $sex = $_POST["sex"];
+    /*$sex = $_POST["sex"];*/
     $number = $_POST["number"];
     $number2 = $_POST["number2"];
     $number3 = $_POST["number3"];
@@ -23,22 +23,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <head>
     <!--CSS-->
-    <link rel="stylesheet" type="text/css" href="default.css">
-    <title>お問い合わせ</title>
+    <link rel="stylesheet" type="text/css" href="default_result.css">
+    <title>送信完了</title>
     <meta charset="utf-8">
 
     <body  style="font-family:'メイリオ',Meiryo;">
         <!--全体の枠-->
         <div id="warp">
             <!--見出し-->
-            <h1>お問い合わせフォーム</h1>
+            <h1>送信完了</h1>
 
             <!--formのサイズ-->
             <div id="main">
                 <div id="main1">
-                    <!--フォーム-->
-                    <form id="form" method="post" action="contact.php">
-
                         <div class="main_bar">
                         <!--苗字-->
                         <div id="name_left1">姓名</div>
@@ -52,8 +49,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <!--性別-->
                         <!--idを追加して文字をクリックしてもチェックがつくようにするためlabel追加-->
                         <div id="name_left1">性別</div>
+                        <!--選択した性別出力-->
                         <div id="name_right1">
-                            <?php echo $sex; ?>
+                            <?php
+                                if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                                    /*男性*/
+                                    if ($_POST["sex"] == "男性") { //男性なら
+                                    print "男性";
+                                    }
+                                    /*女性*/
+                                    elseif ($_POST["sex"] == "女性") { //女性なら
+                                    print "女性";
+                                    }
+                                    /*不明*/
+                                    elseif ($_POST["sex"] == "不明") { //女性なら
+                                    print "不明";
+                                    }
+                                }
+                            ?>
                         </div>
                     </div>
                         <div class="clear_box"></div>
@@ -89,7 +102,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <!--どこでサイトを知りましたか-->
                         <div id="name_left1">どこで知りましたか</div>
                         <div id="name_right1">
-                            <?php echo $abc; ?>
+                            <?php
+                                if (isset($_POST["abc"])) {
+                                    /*変数$abcに格納*/
+                                    $abc = $_POST["abc"];
+                                }
+                                if (isset($abc[0])) {
+                                    print "インターネット ";
+                                }
+                                if (isset($abc[1])) {
+                                    print "広告･新聞 ";
+                                }
+                                if (isset($abc[2])) {
+                                    print "その他 ";
+                                }
+                            ?>
                         </div>
                     </div>
                         <div class="clear_box"></div>
@@ -98,7 +125,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <!--質問カテゴリ-->
                         <div id="name_left1">質問カテゴリ</div>
                         <div id="name_right1">
-                            <?php echo $question; ?>
+                            <?php
+                                if ($_POST["question"] == "1" ) {
+                                        print "不明点";
+                                    }
+                                    elseif ($_POST["question"] == "2" ) {
+                                        print "故障";
+                                    }
+                                    elseif ($_POST["question"] == "3" ) {
+                                        print "その他";
+                                    }
+                                    else {
+                                        print "選択してください";
+                                    }
+                            ?>
                         </div>
                     </div>
                         <div class="clear_box"></div>
@@ -123,7 +163,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                 </div>
 
-                </form>
 
         </div>
 

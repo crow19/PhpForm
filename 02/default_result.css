@@ -41,7 +41,7 @@ h1::after {
 /*main1,2,3の枠の設定*/
 #main1 {
     width: 850px;
-    height: 410px;
+    height: 350px;
     /*border: 1px solid black;*/
 }
 #main2 {
