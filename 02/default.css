@@ -10,6 +10,7 @@ body {
     width: 900px;
     text-align:center;
     border: 1px solid black;
+    background-color: #ffffe0;
 }
 /*h1(見出し)設定*/
 h1 {
@@ -99,6 +100,20 @@ input[type="text"] {
 	-moz-border-radius: 3px;
 	border-radius: 3px;
 }
+input[type="text1"] {
+	border:2px solid #CFD8DC;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+    border:0;
+	border:solid 1px #ccc;
+	color:#444;
+	margin:0;
+	padding:5px;
+	width:50px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
 /*input[type="textbox"]（フォーム内のinput[type="textbox"]）の設定*/
 input[type="textbox"] {
 	border:2px solid #CFD8DC;
@@ -109,7 +124,7 @@ input[type="textbox"] {
 	color:#444;
 	margin:0;
 	padding:5px;
-	width:500px;
+	width:400px;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
@@ -122,7 +137,6 @@ select{
     margin:0;
     padding:5px;
     width:300px;
-    font-family:Arial, sans-serif;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
@@ -151,6 +165,7 @@ textarea:focus {
 /*textarea(高さの設定及びスクロール出来ないように固定)の設定*/
 textarea{
     height: 110px;
+    width: 400px;
     resize: none;
 }
 #button {

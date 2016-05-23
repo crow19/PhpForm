@@ -12,6 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $address = $_POST["address"];
     $question = $_POST["question"];
     $question1 = $_POST["question1"];
+    $question1 = nl2br($question1);
     $email = $_POST["email"];
     $email2 = $_POST["email2"];
     $abc = $_POST["abc"];
@@ -62,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     print "女性";
                                     }
                                     /*不明*/
-                                    elseif ($_POST["sex"] == "不明") { //女性なら
+                                    elseif ($_POST["sex"] == "不明") { //不明なら
                                     print "不明";
                                     }
                                 }
@@ -150,7 +151,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <div id="name_left1">質問内容</div>
                     <!--<div class="clear_box"></div>-->
                     <div id="name_right1">
-                        <?php echo $question1; ?>
+                        <?php print $question1; ?>
                     </div>
                     <div class="clear_box"></div>
                 </div>
