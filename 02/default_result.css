@@ -1,39 +1,54 @@
 @charset "utf-8";
 /*body*/
 body {
-    margin: 0px;
-    padding: 0px;
+    width:100%;
+	margin:0;
+	padding:0;
+    background-color: #ECECEC;
+    background-image: -webkit-gradient(linear, 0 0, 100% 0, color-stop(.5, #F9F9F9), color-stop(.5, transparent), to(transparent));
+    -webkit-background-size: 10px;
 }
 /*全体の枠*/
 #warp {
     margin: 0 auto;
-    width: 900px;
+    width: 800px;
+    height: 700px;
     text-align:center;
     border: 1px solid black;
+    background-color: rgba(255,255,255,0.6)
 }
 /*h1(見出し)設定*/
 h1 {
 	position: relative;
-	padding-bottom: 0.5em;
-	border-bottom: 4px solid #c0c0c0;
+	padding: 0 .5em .5em 2em;
+	border-bottom: 1px solid #ccc;
+}
+h1::before,h1::after {
+	position: absolute;
+	content: '';
+	border-radius: 100%
+}
+h1::before {
+	top: .2em;
+	left: .2em;
+	z-index: 2;
+	width: 18px;
+	height: 18px;
+	background: rgba(150, 150, 150, .5);
 }
 h1::after {
-	position: absolute;
-	bottom: -4px;
-	left: 0;
-	z-index: 2;
-	content: '';
-	width: 20%;
-	height: 4px;
-	background-color: #c1e0ff;
+	top: .7em;
+	left: .7em;
+	width: 13px;
+	height: 13px;
+	background: rgba(210, 210, 210, .5);
 }
 /*main(フォームの枠(縦:600　横：800))設定*/
 #main {
     width: 800px;
     text-align:center;
     margin: 0 auto;
-    height: 670px;
-    background-color: #ffffe0;
+    height:500px;
 }
 /*clear_box(左寄せ、または右寄せされた全ての要素に対する回り込みを解除)の設定*/
 .clear_box {
@@ -41,127 +56,82 @@ h1::after {
 }
 /*main1,2,3の枠の設定*/
 #main1 {
-    width: 850px;
-    height: 350px;
+    width: 800px;
+    height: 430px;
     /*border: 1px solid black;*/
 }
 #main2 {
-    width: 850px;
-    height: 250px;
+    width: 800px;
+    height: 50px;
     /*border: 1px solid black;*/
     margin: 0px auto;
 }
 #main3 {
-    width: 850px;
-    height: 100px;
+    width: 800px;
+    height: 60px;
     /*border: 1px solid black;*/
     margin: 0px auto;
 }
 /*main1,3の枠の中の枠を設定*/
 .main_bar {
-    width: 850px;
-    height: 50px;
+    width: 800px;
+    height: 62px;
 }
 /*main2の枠の中の枠を設定*/
 .main1_bar1{
-    width: 850px;
+    width: 800px;
     height: 140px;
 }
 /*main1,2,3の中の.main_berの中の設定*/
 /*左詰めに設定*/
 #name_left1{
     float: left;
-    text-align: left;
+    text-align: center;
     width: 200px;
     padding: 10px;
-    height: 30px;
+    height: 40px;
+    vertical-align: middle;
+    margin: 0 auto;
+    line-height: 40px;
+    background-color: #ECEFF1;
+    border-top: 1px dotted #90A4AE;
+    border-bottom: 1px dotted #90A4AE;
+    /*background: linear-gradient(transparent 80%, #ff0 0%);*/
+}
+#name_left2{
+    float: left;
+    text-align: center;
+    width: 200px;
+    padding: 10px;
+    height: 113px;
+    vertical-align: middle;
+    margin: 0 auto;
+    line-height: 113px;
+    background-color: #ECEFF1;
+    border-top: 1px dotted #90A4AE;
+    border-bottom: 1px dotted #90A4AE;
     /*background: linear-gradient(transparent 80%, #ff0 0%);*/
 }
 /*左詰めに設定*(記入欄)*/
 #name_right1{
+    border-top: 1px dotted #90A4AE;
+    border-bottom: 1px dotted #90A4AE;
     float: left;
-    text-align: left;
-    width: 600px;
+    text-align: center;
+    vertical-align: middle;
+    margin: 0 auto;
+    line-height: 40px;
+    width: 556px;
     padding: 10px;
-    height: 30px;
-}
-/*input[type="text"]（フォーム内のinput[type="text"]）の設定*/
-input[type="text"] {
-	border:2px solid #CFD8DC;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-    border:0;
-	border:solid 1px #ccc;
-	color:#444;
-	margin:0;
-	padding:5px;
-	width:150px;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-}
-/*input[type="textbox"]（フォーム内のinput[type="textbox"]）の設定*/
-input[type="textbox"] {
-	border:2px solid #CFD8DC;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-    border:0;
-	border:solid 1px #ccc;
-	color:#444;
-	margin:0;
-	padding:5px;
-	width:500px;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-}
-/*select（フォーム内のselect）の設定*/
-select{
-    border:0;
-    border:solid 1px #ccc;
-    color:#444;
-    margin:0;
-    padding:5px;
-    width:300px;
-    font-family:Arial, sans-serif;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-}
-/*inputの記入欄選択時に記入欄の枠、背景色の変更*/
-input:focus {
-	background: #f0f8ff;
-}
-/*textareaの記入欄選択時に記入欄の枠、背景色の変更*/
-textarea:focus {
-	background: #f0f8ff;
-}
-/*textareaの中身の設定*/
-#textarea{
-    float: left;
-    text-align: left;
-    width: 600px;
-    padding: 10px;
-    color:#444;
-    margin:3px 0;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    max-width:300px;
-    max-height:100px;
-
-}
-/*textarea(高さの設定及びスクロール出来ないように固定)の設定*/
-textarea{
-    height: 30px;
-    resize: none;
+    height: 40px;
 }
 #button {
-    width: 800px;
-    height: 50px;
+    width: 250px;
+    height: 60px;
+    float: right;
 }
-/*送信ボタン、リセットボタンの設定*/
-input#submit_button,input#reset_button {
+/*前のページに戻るボタンの設定*/
+input#button {
     background: -moz-linear-gradient(top,#BFE5F2, #63B3D2 50%,#0081B4 50%,#00679A);
 	background: -webkit-gradient(linear, left top, left bottom, from(#BFE5F2), color-stop(0.5,#63B3D2), color-stop(0.5,#0081B4), to(#00679A));
 	border: 1px solid #DDD;
@@ -169,4 +139,8 @@ input#submit_button,input#reset_button {
 	width: 100px;
 	padding: 10px 0;
     border-radius: 5px;
+    float: left;
+    margin: 20px;
+    height: 50px;
+    float: right;
 }

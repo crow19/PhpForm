@@ -5,13 +5,13 @@ error_reporting(E_ALL & ~E_NOTICE);
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = $_POST["name"];
     $name2 = $_POST["name2"];
-    /*$sex = $_POST["sex"];*/
     $number = $_POST["number"];
     $number2 = $_POST["number2"];
     $number3 = $_POST["number3"];
     $address = $_POST["address"];
     $question = $_POST["question"];
     $question1 = $_POST["question1"];
+    /*エンターキーで改行表示*/
     $question1 = nl2br($question1);
     $email = $_POST["email"];
     $email2 = $_POST["email2"];
@@ -53,7 +53,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <!--選択した性別出力-->
                         <div id="name_right1">
                             <?php
-                                if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     /*男性*/
                                     if ($_POST["sex"] == "男性") { //男性なら
                                     print "男性";
@@ -65,7 +64,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     /*不明*/
                                     elseif ($_POST["sex"] == "不明") { //不明なら
                                     print "不明";
-                                    }
                                 }
                             ?>
                         </div>
@@ -158,8 +156,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                 <div id="main3">
                     <div id="button">
-                        <!--送信ボタン-->
-                        <input type="submit" id="submit_button" value="送信">
+                        <!--前の画面に戻る-->
+                        <form>
+                        <input type="button" id="button" value="戻る" onClick="history.back()">
+                        </form>
                         <div class="clear_box"></div>
                     </div>
                 </div>

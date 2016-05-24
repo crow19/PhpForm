@@ -28,7 +28,7 @@
                         <div id="name_left1">姓</div>
                         <!--右側-->
                         <div id="name_right1">
-                            <input type="text" name="name" required="required">
+                            <input type="text" name="name" required="required" placeholder="山田"><span class="reqMark">*</span>
                         </div>
                     </div>
                     <!--clear_box(左寄せ、または右寄せされた全ての要素に対する回り込みを解除)の設定-->
@@ -40,7 +40,7 @@
                         <div id="name_left1">名</div>
                         <!--右側-->
                         <div id="name_right1">
-                            <input type="text" name="name2" required="required">
+                            <input type="text" name="name2" required="required" placeholder="太郎"><span class="reqMark">*</span>
                         </div>
                     </div>
                     <!--clear_box(左寄せ、または右寄せされた全ての要素に対する回り込みを解除)の設定-->
@@ -70,7 +70,7 @@
                         <div id="name_left1">住所</div>
                         <!--右側-->
                         <div id="name_right1">
-                            <input type="textbox" name="address" size="60" required="required">
+                            <input type="textbox" name="address" size="60" required="required" placeholder=""><span class="reqMark">*</span>
                         </div>
                     </div>
                     <!--clear_box(左寄せ、または右寄せされた全ての要素に対する回り込みを解除)の設定-->
@@ -83,9 +83,10 @@
                         <!--右側-->
                         <div id="name_right1">
                             <!--半角数字、4文字しか入力できない-->
-                            <input type="text1" name="number" maxlength="4" onKeyup="this.value=this.value.replace(/[^0-9a-z]+/i,'')" pattern="[0-9]*[0-9]" required="required"> -
-                            <input type="text1" name="number2" maxlength="4" onKeyup="this.value=this.value.replace(/[^0-9a-z]+/i,'')" pattern="[0-9]*[0-9]" required="required"> -
-                            <input type="text1" name="number3" maxlength="4" onKeyup="this.value=this.value.replace(/[^0-9a-z]+/i,'')" pattern="[0-9]*[0-9]" required="required">
+                            <input type="text" name="number" maxlength="4" onKeyup="this.value=this.value.replace(/[^0-9a-z]+/i,'')" pattern="[0-9]*[0-9]" required="required"> -
+                            <input type="text" name="number2" maxlength="4" onKeyup="this.value=this.value.replace(/[^0-9a-z]+/i,'')" pattern="[0-9]*[0-9]" required="required"> -
+                            <input type="text" name="number3" maxlength="4" onKeyup="this.value=this.value.replace(/[^0-9a-z]+/i,'')" pattern="[0-9]*[0-9]" required="required">
+                            <span class="reqMark">*</span>
                         </div>
                     </div>
                     <!--clear_box(左寄せ、または右寄せされた全ての要素に対する回り込みを解除)の設定-->
@@ -98,8 +99,8 @@
                         <!--右側-->
                         <div id="name_right1">
                             <!--半角英数字しか入力できない-->
-                            <input type="text" name="email" onKeyup="this.value=this.value.replace(/[^0-9a-z]+/i,'')" required="required"> @
-                            <input type="text" name="email2" onKeyup="this.value=this.value.replace(/[^0-9a-z]+/i,'')" required="required">
+                            <input type="text1" name="email" onKeyup="this.value=this.value.replace(/[^0-9a-z]+/i,'')" required="required"> @
+                            <input type="text1" name="email2" onKeyup="this.value=this.value.replace(/[^0-9a-z]+/i,'')" required="required"><span class="reqMark">*</span>
                         </div>
                     </div>
                     <!--clear_box(左寄せ、または右寄せされた全ての要素に対する回り込みを解除)の設定-->
@@ -128,6 +129,7 @@
                         <div id="name_left1">質問カテゴリ</div>
                         <!--右側-->
                         <div id="name_right1">
+                            <!--選択-->
                             <select name="question" required="required">
                                 <option value="">--選択してください--</option>
                                 <option value="1">不明点</option>
@@ -146,10 +148,10 @@
                 <!--縦、横設定-->
                 <div class="main1_bar1">
                     <!--左側-->
-                    <div id="name_left1">質問内容</div>
+                    <div id="name_left2">質問内容</div>
                     <!--右側-->
                     <div id="textarea">
-                        <textarea name="question1" cols="70" rows="8" placeholder="質問内容をご記入ください" maxlength="300" required="required"></textarea>
+                        <textarea name="question1" cols="70" rows="8" placeholder="質問内容をご記入ください" maxlength="300" required="required"></textarea><span class="reqMark">*</span>
                     </div>
                 </div>
                 <!--clear_box(左寄せ、または右寄せされた全ての要素に対する回り込みを解除)の設定-->
