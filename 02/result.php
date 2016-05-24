@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $question = $_POST["question"];
     $question1 = $_POST["question1"];
     /*エンターキーで改行表示*/
-    $question1 = nl2br($question1);
+    /*$question1 = nl2br(htmlspecialchars($question1));*/
     $email = $_POST["email"];
     $email2 = $_POST["email2"];
     $abc = $_POST["abc"];
@@ -43,61 +43,66 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <div id="name_right1">
                             <?php echo $name.'&nbsp;&nbsp;'.$name2; ?>
                         </div>
-                    </div>
+                        <!--解除-->
                         <div class="clear_box"></div>
+                    </div>
 
-                        <div class="main_bar">
+                    <div class="main_bar">
                         <!--性別-->
                         <!--idを追加して文字をクリックしてもチェックがつくようにするためlabel追加-->
                         <div id="name_left1">性別</div>
                         <!--選択した性別出力-->
                         <div id="name_right1">
                             <?php
-                                    /*男性*/
-                                    if ($_POST["sex"] == "男性") { //男性なら
+                                /*男性*/
+                                if ($_POST["sex"] == "1") { //男性なら
                                     print "男性";
-                                    }
-                                    /*女性*/
-                                    elseif ($_POST["sex"] == "女性") { //女性なら
+                                }
+                                /*女性*/
+                                elseif ($_POST["sex"] == "2") { //女性なら
                                     print "女性";
-                                    }
-                                    /*不明*/
-                                    elseif ($_POST["sex"] == "不明") { //不明なら
+                                }
+                                /*不明*/
+                                elseif ($_POST["sex"] == "3") { //不明なら
                                     print "不明";
                                 }
                             ?>
                         </div>
-                    </div>
+                        <!--解除-->
                         <div class="clear_box"></div>
+                    </div>
 
-                        <div class="main_bar">
+                    <div class="main_bar">
                         <!--住所-->
                         <div id="name_left1">住所</div>
                         <div id="name_right1">
                             <?php echo $address; ?>
                         </div>
-                    </div>
+                        <!--解除-->
                         <div class="clear_box"></div>
+                    </div>
 
-                        <div class="main_bar">
+                    <div class="main_bar">
                         <!--電話番号-->
                         <div id="name_left1">電話番号</div>
                         <div id="name_right1">
                             <?php echo $number."-".$number2."-".$number3; ?>
                         </div>
-                        </div>
+                        <!--解除-->
                         <div class="clear_box"></div>
+                    </div>
 
-                        <div class="main_bar">
+                    <div class="main_bar">
                         <!--メールアドレス-->
                         <div id="name_left1">メールアドレス</div>
                         <div id="name_right1">
                             <?php echo $email."@".$email2 ?>
                         </div>
-                    </div>
+                        <!--解除-->
                         <div class="clear_box"></div>
+                    </div>
 
-                        <div class="main_bar">
+                    <div class="main_bar">
                         <!--どこでサイトを知りましたか-->
                         <div id="name_left1">どこで知りましたか</div>
                         <div id="name_right1">
@@ -117,10 +122,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 }
                             ?>
                         </div>
-                    </div>
+                        <!--解除-->
                         <div class="clear_box"></div>
+                    </div>
 
-                        <div class="main_bar">
+                    <div class="main_bar">
                         <!--質問カテゴリ-->
                         <div id="name_left1">質問カテゴリ</div>
                         <div id="name_right1">
@@ -139,17 +145,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     }
                             ?>
                         </div>
-                    </div>
+                        <!--解除-->
                         <div class="clear_box"></div>
+                    </div>
 
                 </div>
 
                 <div id="main2">
                     <!--質問内容-->
-                    <div id="name_left1">質問内容</div>
+                    <div id="name_left2">質問内容</div>
                     <!--<div class="clear_box"></div>-->
-                    <div id="name_right1">
-                        <?php print $question1; ?>
+                    <div id="textarea">
+                        <textarea cols="70" rows="8" maxlength="300" disabled="readonly"><?php echo $question1; ?></textarea>
                     </div>
                     <div class="clear_box"></div>
                 </div>
@@ -160,8 +167,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <form>
                         <input type="button" id="button" value="戻る" onClick="history.back()">
                         </form>
-                        <div class="clear_box"></div>
                     </div>
+                    <!--解除-->
+                    <div class="clear_box"></div>
                 </div>
 
 
