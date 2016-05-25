@@ -15,12 +15,12 @@ body {
     height: 770px;
     text-align:center;
     border: 1px solid black;
-    background-color: rgba(255,255,255,0.6)
+    background-color: rgba(255,255,255,0.7)
 }
 /*h1(見出し)設定*/
 h1 {
 	position: relative;
-	padding: 0 .5em .5em 2em;
+	padding: 0 .5em 0.5em 2em;
 	border-bottom: 1px solid #ccc;
 }
 h1::before,h1::after {
@@ -29,19 +29,19 @@ h1::before,h1::after {
 	border-radius: 100%
 }
 h1::before {
-	top: .2em;
-	left: .2em;
-	z-index: 2;
+	top: 0.2em;
+	left: 0.2em;
+	z-index: 2px;
 	width: 18px;
 	height: 18px;
-	background: rgba(150, 150, 150, .5);
+	background: rgba(150, 150, 150, 0.5);
 }
 h1::after {
-	top: .7em;
-	left: .7em;
+	top: 0.7em;
+	left: 0.7em;
 	width: 13px;
 	height: 13px;
-	background: rgba(210, 210, 210, .5);
+	background: rgba(210, 210, 210, 0.5);
 }
 /*main(フォームの枠(縦:600　横：800))設定*/
 #main {
@@ -57,12 +57,12 @@ h1::after {
 /*main1,2,3の枠の設定*/
 #main1 {
     width: 800px;
-    height: 430px;
+    height: 428px;
     /*border: 1px solid black;*/
 }
 #main2 {
     width: 800px;
-    height: 50px;
+    height: 135px;
     /*border: 1px solid black;*/
     margin: 0px auto;
 }
@@ -73,16 +73,25 @@ h1::after {
     margin: 0px auto;
 }
 /*main1,3の枠の中の枠を設定*/
+.main_bar_1 {
+    width: 800px;
+    height: 60px;
+    border-top: 1px dotted #90A4AE;
+    border-bottom: 1px dotted #90A4AE;
+}
 .main_bar {
     width: 800px;
-    height: 62px;
+    height: 60px;
+    /*border-top: 1px dotted #90A4AE;*/
+    border-bottom: 1px dotted #90A4AE;
 }
 /*main2の枠の中の枠を設定*/
 .main1_bar1{
     width: 800px;
-    height: 140px;
+    height: 133px;
+    /*border-top: 1px dotted #90A4AE;*/
+    border-bottom: 1px dotted #90A4AE;
 }
-/*main1,2,3の中の.main_berの中の設定*/
 /*左詰めに設定*/
 #name_left1{
     float: left;
@@ -94,9 +103,6 @@ h1::after {
     margin: 0 auto;
     line-height: 40px;
     background-color: #ECEFF1;
-    border-top: 1px dotted #90A4AE;
-    border-bottom: 1px dotted #90A4AE;
-    /*background: linear-gradient(transparent 80%, #ff0 0%);*/
 }
 #name_left2{
     float: left;
@@ -108,22 +114,17 @@ h1::after {
     margin: 0 auto;
     line-height: 113px;
     background-color: #ECEFF1;
-    border-top: 1px dotted #90A4AE;
-    border-bottom: 1px dotted #90A4AE;
-    /*background: linear-gradient(transparent 80%, #ff0 0%);*/
 }
 /*左詰めに設定*(記入欄)*/
 #name_right1{
-    border-top: 1px dotted #90A4AE;
-    border-bottom: 1px dotted #90A4AE;
     float: left;
     text-align: center;
-    vertical-align: middle;
-    margin: 0 auto;
-    line-height: 40px;
     width: 556px;
     padding: 10px;
     height: 40px;
+    vertical-align: middle;
+    margin: 0 auto;
+    line-height: 40px;
 }
 #name_left2{
     float: left;
@@ -135,9 +136,6 @@ h1::after {
     margin: 0 auto;
     line-height: 113px;
     background-color: #ECEFF1;
-    border-top: 1px dotted #90A4AE;
-    border-bottom: 1px dotted #90A4AE;
-    /*background: linear-gradient(transparent 80%, #ff0 0%);*/
 }
 /*textareaの中身の設定*/
 #textarea{
@@ -149,10 +147,10 @@ h1::after {
     margin: 0;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
-    border-top: 1px dotted #90A4AE;
+    /*border-top: 1px dotted #90A4AE;*/
     border-bottom: 1px dotted #90A4AE;
 }
-/*textarea(高さの設定及びスクロール出来ないように固定)の設定*/
+/*textarea(サイズ変更出来ないように固定)の設定*/
 textarea{
     height: 100px;
     resize: none;
@@ -172,8 +170,7 @@ input#button {
 	width: 100px;
 	padding: 10px 0;
     border-radius: 5px;
-    float: left;
-    margin: 20px;
-    height: 50px;
     float: right;
+    margin: 10px;
+    height: 37px;
 }

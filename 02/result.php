@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <!--formのサイズ-->
             <div id="main">
                 <div id="main1">
-                        <div class="main_bar">
+                        <div class="main_bar_1">
                         <!--苗字-->
                         <div id="name_left1">姓名</div>
                         <div id="name_right1">
@@ -152,13 +152,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </div>
 
                 <div id="main2">
-                    <!--質問内容-->
-                    <div id="name_left2">質問内容</div>
-                    <!--<div class="clear_box"></div>-->
-                    <div id="textarea">
-                        <textarea cols="70" rows="8" maxlength="300" disabled="readonly"><?php echo $question1; ?></textarea>
+                    <div class="main1_bar1">
+                        <!--質問内容-->
+                        <div id="name_left2">質問内容</div>
+                        <!--<div class="clear_box"></div>-->
+                        <div id="textarea">
+                            <textarea cols="70" rows="8" maxlength="300" disabled="readonly"><?php echo $question1; ?></textarea>
+                        </div>
+                        <div class="clear_box"></div>
                     </div>
-                    <div class="clear_box"></div>
                 </div>
 
                 <div id="main3">

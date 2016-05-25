@@ -1,34 +1,58 @@
-<!DOCTYPE html>
-<html>
+<?php
+session_start();
+/*Noticeエラー回避*/
+error_reporting(E_ALL & ~E_NOTICE);
+// 送信フラグ
+$send_flg = false;
+// エラーメッセージ
+$err_msg = array();
+/**/
+// 送信ボタンを押した後の処理
+if (isset($_POST["submit_button"])) {
+	// エラー
+	if ($_POST["name"] == "") {
+		$err_msg[] = "姓は必須です";
+	}
+    else {
+        header("Location:result.php");
+    }
+}
+?>
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
 <head>
     <!--CSS-->
     <link rel="stylesheet" type="text/css" href="default.css">
     <!--タイトル-->
     <title>お問い合わせ</title>
     <!--文字コード設定-->
-    <meta charset="utf-8">
+    <meta  http-equiv="content-type" content="text/html" charset="utf-8">
 </head>
 <!--フォント設定-->
-<body  style="font-family:'メイリオ',Meiryo;">
-
+<body style="font-family:'メイリオ',Meiryo;">
     <!--全体の枠-->
     <div id="warp">
+
+        <?php
+            // 初期フォーム表示
+            if (!$send_flg) {
+        ?>
         <!--見出し-->
         <h1>お問い合わせフォーム</h1>
-
         <!--formの全体-->
         <div id="main">
             <!--姓から質問カテゴリまでの枠-->
             <div id="main1">
                 <!--フォーム-->
-                <form id="form" name="form" method="post" action="result.php">
+                <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                     <!--縦、横設定-->
-                    <div class="main_bar">
+                    <div class="main_bar_1">
                         <!--左側-->
                         <div id="name_left1">姓</div>
                         <!--右側-->
                         <div id="name_right1">
-                            <input type="text" name="name" required="required" placeholder="山田"><span class="reqMark">*</span>
+                            <input type="text" name="name" value="<?php echo $_POST["name"] ?>">
                         </div>
                         <!--解除-->
                         <div class="clear_box"></div>
@@ -79,7 +103,7 @@
                     <!--左側-->
                     <div class="main_bar">
                         <!--左側-->
-                        <div id="name_left1">電話番号(半角英数字)</div>
+                        <div id="name_left1">電話番号</div>
                         <!--右側-->
                         <div id="name_right1">
                             <!--半角数字、4文字しか入力できない-->
@@ -162,7 +186,7 @@
             <div id="main3">
                 <div id="button">
                     <!--送信ボタン-->
-                    <input type="submit" id="submit_button" value="送信">
+                    <input type="submit" name="submit_button" id="submit_button" value="送信">
                     <!--<button type="button"id="submit_button" onclick="submit();">送信</button>-->
                     <!--リセットボタン-->
                     <input type="reset" id="reset_button" value="リセット">
@@ -174,6 +198,29 @@
             </form>
 
     </div>
+    <div id="main4">
+        <?php
+            // エラーメッセージがある場合
+            if (count($err_msg) > 0) {
+        ?>
+        <p style="color:red;">
+        <?php
+            foreach ($err_msg as $val) {
+        ?>
+        ※
+        <?php
+            echo $val;
+        ?><br　/>
+        <?php
+            }
+        ?>
+        <br />
+        <?php
+            }
+            }
+        ?>
+    </div>
+
 
 
 </body>
