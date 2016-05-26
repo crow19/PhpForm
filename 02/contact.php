@@ -1,26 +1,34 @@
 <?php
-session_start();
 /*Noticeエラー回避*/
 error_reporting(E_ALL & ~E_NOTICE);
+
 // 送信フラグ
 $send_flg = false;
 // エラーメッセージ
 $err_msg = array();
-/**/
 // 送信ボタンを押した後の処理
 if (isset($_POST["submit_button"])) {
-	// エラー
+	/*生、名、住所、質問内容未記入時にエラー*/
 	if ($_POST["name"] == "") {
-		$err_msg[] = "姓は必須です";
+		$err_msg[] = "姓は必須です。\n";
 	}
-    else {
-        header("Location:result.php");
+	if ($_POST["name2"] == "") {
+		$err_msg[] = "名は必須です。\n";
+	}
+	if ($_POST["email"] == "" || $_POST["email2"] == "") {
+		$err_msg[] = "メールアドレスは必須です。\n";
+	}
+	if ($_POST["question1"] == "") {
+		$err_msg[] = "質問内容は必須です。\n";
+	}
+	if (count($err_msg) == 0) {
+    	header('HTTP/1.1 307 Temporary Redirect');
+		header("Location:result.php");
     }
 }
 ?>
 <!DOCTYPE HTML>
 <html lang="ja">
-<head>
 <head>
     <!--CSS-->
     <link rel="stylesheet" type="text/css" href="default.css">
@@ -48,11 +56,12 @@ if (isset($_POST["submit_button"])) {
                 <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                     <!--縦、横設定-->
                     <div class="main_bar_1">
-                        <!--左側-->
+                        <!--姓-->
                         <div id="name_left1">姓</div>
-                        <!--右側-->
+                        <!--姓記入欄-->
                         <div id="name_right1">
-                            <input type="text" name="name" value="<?php echo $_POST["name"] ?>">
+                            <input type="text" name="name" placeholder="山田" value="<?php echo $_POST["name"] ?>">
+							<span class="reqMark">*</span>
                         </div>
                         <!--解除-->
                         <div class="clear_box"></div>
@@ -60,11 +69,12 @@ if (isset($_POST["submit_button"])) {
 
                     <!--縦、横設定-->
                     <div class="main_bar">
-                        <!--左側-->
+                        <!--名-->
                         <div id="name_left1">名</div>
-                        <!--右側-->
+                        <!--名記入欄-->
                         <div id="name_right1">
-                            <input type="text" name="name2" required="required" placeholder="太郎"><span class="reqMark">*</span>
+                            <input type="text" name="name2" placeholder="太郎" value="<?php echo $_POST["name2"] ?>">
+							<span class="reqMark">*</span>
                         </div>
                         <!--解除-->
                         <div class="clear_box"></div>
@@ -72,15 +82,18 @@ if (isset($_POST["submit_button"])) {
 
                     <!--縦、横設定-->
                     <div class="main_bar">
-                        <!--左側-->
+                        <!--性別-->
                         <div id="name_left1">性別</div>
                         <!--idを追加して文字をクリックしてもチェックがつくようにするためlabel追加-->
-                        <!--右側-->
+                        <!--radioボタン選択欄-->
                         <div id="name_right1">
+							<!--男性-->
                             <input type="radio" name="sex" value="1" checked id="m">
                             <label for="m">男性</label>
+							<!--女性-->
                             <input type="radio" name="sex" value="2" id="w">
                             <label for="w">女性</label>
+							<!--不明-->
                             <input type="radio" name="sex" value="3" id="z">
                             <label for="z">不明</label>
                         </div>
@@ -90,11 +103,11 @@ if (isset($_POST["submit_button"])) {
 
                     <!--縦、横設定-->
                     <div class="main_bar">
-                        <!--左側-->
+                        <!--住所-->
                         <div id="name_left1">住所</div>
-                        <!--右側-->
+                        <!--住所記入欄-->
                         <div id="name_right1">
-                            <input type="textbox" name="address" size="60" required="required" placeholder=""><span class="reqMark">*</span>
+                            <input type="textbox" name="address" size="60">
                         </div>
                         <!--解除-->
                         <div class="clear_box"></div>
@@ -102,15 +115,16 @@ if (isset($_POST["submit_button"])) {
 
                     <!--左側-->
                     <div class="main_bar">
-                        <!--左側-->
+                        <!--電話番号-->
                         <div id="name_left1">電話番号</div>
-                        <!--右側-->
+                        <!--電話番号記入欄-->
                         <div id="name_right1">
-                            <!--半角数字、4文字しか入力できない-->
-                            <input type="text2" name="number" maxlength="4" onKeyup="this.value=this.value.replace(/[^0-9a-z]+/i,'')" pattern="[0-9]*[0-9]" required="required"> -
-                            <input type="text2" name="number2" maxlength="4" onKeyup="this.value=this.value.replace(/[^0-9a-z]+/i,'')" pattern="[0-9]*[0-9]" required="required"> -
-                            <input type="text2" name="number3" maxlength="4" onKeyup="this.value=this.value.replace(/[^0-9a-z]+/i,'')" pattern="[0-9]*[0-9]" required="required">
-                            <span class="reqMark">*</span>
+                            <!--半角数字、各枠4文字しか入力できない-->
+                            <input type="text2" name="number" maxlength="4" onKeyup="this.value=this.value.replace(/[^0-9a-z]+/i,'')" pattern="[0-9]*[0-9]">
+							&nbsp;-&nbsp;
+                            <input type="text2" name="number2" maxlength="4" onKeyup="this.value=this.value.replace(/[^0-9a-z]+/i,'')" pattern="[0-9]*[0-9]">
+							&nbsp;-&nbsp;
+                            <input type="text2" name="number3" maxlength="4" onKeyup="this.value=this.value.replace(/[^0-9a-z]+/i,'')" pattern="[0-9]*[0-9]">
                         </div>
                         <!--解除-->
                         <div class="clear_box"></div>
@@ -118,23 +132,25 @@ if (isset($_POST["submit_button"])) {
 
                     <!--縦、横設定-->
                     <div class="main_bar">
-                        <!--左側-->
+                        <!--メールアドレス-->
                         <div id="name_left1">メールアドレス</div>
-                        <!--右側-->
+                        <!--メールアドレス記入-->
                         <div id="name_right1">
                             <!--半角英数字しか入力できない-->
-                            <input type="text1" name="email" onKeyup="this.value=this.value.replace(/[^0-9a-z]+/i,'')" required="required"> @
-                            <input type="text1" name="email2" onKeyup="this.value=this.value.replace(/[^0-9a-z]+/i,'')" required="required"><span class="reqMark">*</span>
-                        </div>
+                            <input type="text1" name="email" onKeyup="this.value=this.value.replace(/[^0-9a-z]+/i,'')" value="<?php echo $_POST["email"] ?>">
+							&nbsp;@&nbsp;
+                            <input type="text1" name="email2" onKeyup="this.value=this.value.replace(/[^0-9a-z]+/i,'')" value="<?php echo $_POST["email2"] ?>">
+							<span class="reqMark">*</span>
+						</div>
                         <!--解除-->
                         <div class="clear_box"></div>
                     </div>
 
                     <!--縦、横設定-->
                     <div class="main_bar">
-                        <!--左側-->
+                        <!--どこで知りましたか-->
                         <div id="name_left1">どこで知りましたか</div>
-                        <!--右側-->
+                        <!--checkbox選択欄-->
                         <div id="name_right1">
                             <input type="checkbox" name="abc[0]" id="a" value="インターネット" checked>
                             <label for="a">インターネット</label>
@@ -149,12 +165,11 @@ if (isset($_POST["submit_button"])) {
 
                     <!--縦、横設定-->
                     <div class="main_bar">
-                        <!--左側-->
+                        <!--質問カテゴリ-->
                         <div id="name_left1">質問カテゴリ</div>
-                        <!--右側-->
+                        <!--選択質問-->
                         <div id="name_right1">
-                            <!--選択-->
-                            <select name="question" required="required">
+                            <select name="question">
                                 <option value="">--選択してください--</option>
                                 <option value="1">不明点</option>
                                 <option value="2">故障</option>
@@ -165,17 +180,18 @@ if (isset($_POST["submit_button"])) {
                         <div class="clear_box"></div>
                     </div>
 
-            </div>
+        	</div>
 
             <!--質問内容の枠-->
             <div id="main2">
                 <!--縦、横設定-->
                 <div class="main1_bar1">
-                    <!--左側-->
+                    <!--質問内容-->
                     <div id="name_left2">質問内容</div>
-                    <!--右側-->
+                    <!--記入欄-->
                     <div id="textarea">
-                        <textarea name="question1" cols="70" rows="8" placeholder="質問内容をご記入ください" maxlength="300" required="required"></textarea><span class="reqMark">*</span>
+                        <textarea name="question1" cols="70" placeholder="質問内容をご記入ください" value="<?php print $_SESSION["question1"] ?>"></textarea>
+						<span class="reqMark">*</span>
                     </div>
                     <!--解除-->
                     <div class="clear_box"></div>
@@ -187,7 +203,6 @@ if (isset($_POST["submit_button"])) {
                 <div id="button">
                     <!--送信ボタン-->
                     <input type="submit" name="submit_button" id="submit_button" value="送信">
-                    <!--<button type="button"id="submit_button" onclick="submit();">送信</button>-->
                     <!--リセットボタン-->
                     <input type="reset" id="reset_button" value="リセット">
                     <!--解除-->
@@ -195,36 +210,33 @@ if (isset($_POST["submit_button"])) {
                 </div>
             </div>
 
-            </form>
+            	</form>
 
+    	</div>
+
+		<!--未記入時エラー表示-->
+    	<div id="main4">
+	        <?php
+	            /*エラーメッセージがある場合*/
+	            if (count($err_msg) > 0) {
+	        ?>
+	        <p style="color:red;">
+	        <?php
+	            foreach ($err_msg as $val) {
+	        ?>
+	        ※
+	        <?php
+	            echo $val;
+	        ?>
+	        <?php
+	            }
+	        ?>
+	        <br />
+	        <?php
+	            }
+	        }
+	        ?>
     </div>
-    <div id="main4">
-        <?php
-            // エラーメッセージがある場合
-            if (count($err_msg) > 0) {
-        ?>
-        <p style="color:red;">
-        <?php
-            foreach ($err_msg as $val) {
-        ?>
-        ※
-        <?php
-            echo $val;
-        ?><br　/>
-        <?php
-            }
-        ?>
-        <br />
-        <?php
-            }
-            }
-        ?>
-    </div>
-
-
 
 </body>
-
-
-
 </html>

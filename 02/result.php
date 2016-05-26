@@ -12,16 +12,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $question = $_POST["question"];
     $question1 = $_POST["question1"];
     /*エンターキーで改行表示*/
-    /*$question1 = nl2br(htmlspecialchars($question1));*/
+    $question1 = nl2br(htmlspecialchars($question1));
     $email = $_POST["email"];
     $email2 = $_POST["email2"];
     $abc = $_POST["abc"];
 }
 
 ?>
-<!DOCTYPE html>
-<html>
-
+<!DOCTYPE HTML>
+<html lang="ja">
 <head>
     <!--CSS-->
     <link rel="stylesheet" type="text/css" href="default_result.css">
@@ -157,7 +156,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <div id="name_left2">質問内容</div>
                         <!--<div class="clear_box"></div>-->
                         <div id="textarea">
-                            <textarea cols="70" rows="8" maxlength="300" disabled="readonly"><?php echo $question1; ?></textarea>
+                            <div id="textarea1"><?php echo $question1; ?></div>
                         </div>
                         <div class="clear_box"></div>
                     </div>
