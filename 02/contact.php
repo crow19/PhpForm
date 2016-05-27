@@ -190,7 +190,7 @@ if (isset($_POST["submit_button"])) {
                     <div id="name_left2">質問内容</div>
                     <!--記入欄-->
                     <div id="textarea">
-                        <textarea name="question1" cols="70" placeholder="質問内容をご記入ください" value="<?php print $_SESSION["question1"] ?>"></textarea>
+                        <textarea name="question1" cols="70" placeholder="質問内容をご記入ください" value="<?php echo $_POST["question1"] ?>"></textarea>
 						<span class="reqMark">*</span>
                     </div>
                     <!--解除-->
