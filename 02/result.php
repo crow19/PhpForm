@@ -76,7 +76,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <!--住所-->
                         <div id="name_left1">住所</div>
                         <div id="name_right1">
-                            <?php echo $address; ?>
+                            <?php
+                                if ($address){
+                                	print $address;
+                                }else{
+                                	print "未入力";
+                                }
+                            ?>
                         </div>
                         <!--解除-->
                         <div class="clear_box"></div>
