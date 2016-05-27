@@ -5,9 +5,10 @@ error_reporting(E_ALL & ~E_NOTICE);
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = $_POST["name"];
     $name2 = $_POST["name2"];
-    $number = $_POST["number"];
-    $number2 = $_POST["number2"];
-    $number3 = $_POST["number3"];
+    /*半角に変換したものを用意*/
+    $number = mb_convert_kana($_POST["number"],'n','utf-8');
+    $number2 = mb_convert_kana($_POST["number2"],'n','utf-8');
+    $number3 = mb_convert_kana($_POST["number3"],'n','utf-8');
     $address = $_POST["address"];
     $question = $_POST["question"];
     $question1 = $_POST["question1"];
@@ -85,7 +86,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <!--電話番号-->
                         <div id="name_left1">電話番号</div>
                         <div id="name_right1">
-                            <?php echo $number."-".$number2."-".$number3; ?>
+                            <!--送信したデータが数字であれば送信可能-->
+                            <?php
+                                if (is_numeric($number) and is_numeric($number2) and is_numeric($number3)) {
+                                    print $number."-".$number2."-".$number3;
+                                }
+                                 else {
+                                    print '半角数字でご記入ください';
+                                }
+                            ?>
                         </div>
                         <!--解除-->
                         <div class="clear_box"></div>
@@ -95,7 +104,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <!--メールアドレス-->
                         <div id="name_left1">メールアドレス</div>
                         <div id="name_right1">
-                            <?php echo $email."@".$email2 ?>
+                            <!--半角英数字でデータを送信しないと表示されない-->
+                            <?php
+                            if (preg_match("/^[a-zA-Z0-9]+$/", $email) and preg_match("/^[a-zA-Z0-9]+$/", $email2)) {
+                                print $email."@".$email2;
+                            }
+                            else {
+                                print '半角英数字でご記入ください';
+                            }
+                            ?>
                         </div>
                         <!--解除-->
                         <div class="clear_box"></div>
@@ -140,7 +157,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     print "その他";
                                 }
                                 else {
-                                    print "選択してください";
+                                    print "無選択";
                                 }
                             ?>
                         </div>

@@ -291,3 +291,7 @@ label:hover {
     background-color: #80DEEA;
     color: white;
 }
+/*空白*/
+#spacing {
+    margin-right: 5px;
+}

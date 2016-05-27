@@ -114,8 +114,8 @@ h1::after {
     vertical-align: middle;
     margin: 0 auto;
     background-color: #ECEFF1;
-    padding-bottom: 32767px;
-    margin-bottom: -32767px;
+    /*padding-bottom: 32767px;
+    margin-bottom: -32767px;*/
 }
 /*左詰めに設定*(記入欄)*/
 #name_right1{

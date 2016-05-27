@@ -10,16 +10,19 @@ $err_msg = array();
 if (isset($_POST["submit_button"])) {
 	/*生、名、住所、質問内容未記入時にエラー*/
 	if ($_POST["name"] == "") {
-		$err_msg[] = "姓は必須です。\n";
+		$err_msg[] = "姓は必須です。";
 	}
 	if ($_POST["name2"] == "") {
-		$err_msg[] = "名は必須です。\n";
+		$err_msg[] = "名は必須です。";
+	}
+	if ($_POST["number"] == "" || $_POST["number2"] == "" || $_POST["number3"] == "") {
+		$err_msg[] = "電話番号は必須です。";
 	}
 	if ($_POST["email"] == "" || $_POST["email2"] == "") {
-		$err_msg[] = "メールアドレスは必須です。\n";
+		$err_msg[] = "メールアドレスは必須です。";
 	}
 	if ($_POST["question1"] == "") {
-		$err_msg[] = "質問内容は必須です。\n";
+		$err_msg[] = "質問内容は必須です。";
 	}
 	if (count($err_msg) == 0) {
     	header('HTTP/1.1 307 Temporary Redirect');
@@ -27,7 +30,7 @@ if (isset($_POST["submit_button"])) {
     }
 }
 ?>
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
     <!--CSS-->
@@ -120,11 +123,12 @@ if (isset($_POST["submit_button"])) {
                         <!--電話番号記入欄-->
                         <div id="name_right1">
                             <!--半角数字、各枠4文字しか入力できない-->
-                            <input type="text2" name="number" maxlength="4" onKeyup="this.value=this.value.replace(/[^0-9a-z]+/i,'')" pattern="[0-9]*[0-9]">
-							&nbsp;-&nbsp;
-                            <input type="text2" name="number2" maxlength="4" onKeyup="this.value=this.value.replace(/[^0-9a-z]+/i,'')" pattern="[0-9]*[0-9]">
-							&nbsp;-&nbsp;
-                            <input type="text2" name="number3" maxlength="4" onKeyup="this.value=this.value.replace(/[^0-9a-z]+/i,'')" pattern="[0-9]*[0-9]">
+                            <input type="text2" name="number" maxlength="4">
+							<span id="spacing"></span>-<span id="spacing"></span>
+                            <input type="text2" name="number2" maxlength="4">
+							<span id="spacing"></span>-<span id="spacing"></span>
+                            <input type="text2" name="number3" maxlength="4">
+							<span class="reqMark">*</span>
                         </div>
                         <!--解除-->
                         <div class="clear_box"></div>
@@ -137,9 +141,9 @@ if (isset($_POST["submit_button"])) {
                         <!--メールアドレス記入-->
                         <div id="name_right1">
                             <!--半角英数字しか入力できない-->
-                            <input type="text1" name="email" onKeyup="this.value=this.value.replace(/[^0-9a-z]+/i,'')" value="<?php echo $_POST["email"] ?>">
-							&nbsp;@&nbsp;
-                            <input type="text1" name="email2" onKeyup="this.value=this.value.replace(/[^0-9a-z]+/i,'')" value="<?php echo $_POST["email2"] ?>">
+                            <input type="text1" name="email" value="<?php echo $_POST["email"] ?>">
+							<span id="spacing"></span>@<span id="spacing"></span>
+                            <input type="text1" name="email2" value="<?php echo $_POST["email2"] ?>">
 							<span class="reqMark">*</span>
 						</div>
                         <!--解除-->
@@ -226,7 +230,7 @@ if (isset($_POST["submit_button"])) {
 	        ?>
 	        ※
 	        <?php
-	            echo $val;
+	            echo $val."<br />";
 	        ?>
 	        <?php
 	            }
