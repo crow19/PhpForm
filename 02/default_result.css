@@ -179,3 +179,7 @@ input#button {
     margin: 10px;
     height: 37px;
 }
+/*文字の間にスペース*/
+.spacing {
+    word-spacing: 10px;
+}

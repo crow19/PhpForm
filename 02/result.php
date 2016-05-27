@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <!--苗字-->
                         <div id="name_left1">姓名</div>
                         <div id="name_right1">
-                            <?php echo $name.'&nbsp;&nbsp;'.$name2; ?>
+                            <?php echo $name."<span style='margin-right: 10px;'></span>".$name2; ?>
                         </div>
                         <!--解除-->
                         <div class="clear_box"></div>
@@ -131,17 +131,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <div id="name_right1">
                             <?php
                                 if ($_POST["question"] == "1" ) {
-                                        print "不明点";
-                                    }
-                                    elseif ($_POST["question"] == "2" ) {
-                                        print "故障";
-                                    }
-                                    elseif ($_POST["question"] == "3" ) {
-                                        print "その他";
-                                    }
-                                    else {
-                                        print "選択してください";
-                                    }
+                                    print "不明点";
+                                }
+                                if ($_POST["question"] == "2" ) {
+                                    print "故障";
+                                }
+                                if ($_POST["question"] == "3" ) {
+                                    print "その他";
+                                }
+                                else {
+                                    print "選択してください";
+                                }
                             ?>
                         </div>
                         <!--解除-->
@@ -166,7 +166,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <div id="button">
                         <!--前の画面に戻る-->
                         <form>
-                        <input type="button" id="button" value="戻る" onClick="history.back()">
+                        <input type="button" id="button" value="戻る" onClick="location.href='contact.php'">
                         </form>
                     </div>
                     <!--解除-->
